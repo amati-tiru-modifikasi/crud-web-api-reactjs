@@ -1,13 +1,15 @@
--- latihan.dbo.Pegawai definition
+CREATE table dbo.Department(
+DepartmentId int identity(1,1),
+DepartmentName nvarchar(500)
+);
 
--- Drop table
+CREATE table dbo.Employee(
+EmployeeId int identity(1,1),
+EmployeeName nvarchar(500),
+Department nvarchar(500),
+DateOfJoining datetime,
+PhotoFileName nvarchar(500)
+)
 
--- DROP TABLE latihan.dbo.Pegawai GO
-
-CREATE TABLE latihan.dbo.Pegawai (
-	Id varchar(100) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-	FirstName varchar(100) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-	LastName varchar(100) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-	Mobile varchar(100) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-	Email varchar(100) COLLATE SQL_Latin1_General_CP1_CI_AS NULL
-) GO;
+insert into dbo.Department values ('IT');
+insert into dbo.Department values ('Supports');
