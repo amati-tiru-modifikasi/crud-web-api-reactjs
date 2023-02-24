@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "j8o8CuaM10W46WXeX4Nr3hkwhquFp2Ug1yLhoUvseoux484h5ls0VvFvA3zp6Eql54BB6X8frg9GPa9oQFZEqg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\RSUP\\DEV\\C#\\crud-web-api-reactjs\\WebApplicationApi\\WebApplicationApi\\WebApplicationApi.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\RSUP\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "C:\\Users\\RSUP\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\RSUP\\.nuget\\packages\\swashbuckle.aspnetcore\\6.2.3\\swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
+    "C:\\Users\\RSUP\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.3\\swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
+    "C:\\Users\\RSUP\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.2.3\\swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",
+    "C:\\Users\\RSUP\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.2.3\\swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512"
+  ],
+  "logs": []
+}
