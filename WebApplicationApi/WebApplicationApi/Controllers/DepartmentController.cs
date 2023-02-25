@@ -39,5 +39,29 @@ namespace WebApplicationApi.Controller
             }
             return new JsonResult(table);
         }
+
+        [HttpPost]
+        public JsonResult Post(Department de) {
+            string query = @"
+                INSERT INTO dbo.Department
+                VALUES (@DepartmentName)
+            ";
+
+            DataTable table = new DataTable();
+            string slqDataSource = _configuration.GetConnectionString("EmployeeAppCon");
+            SqlDataReader myReader;
+            using(SqlConnection myCon = new SqlConnection(slqDataSource)) {
+                myCon.Open();
+                using(SqlCommand myCommand = new SqlCommand(query, myCon)) {
+                    myCommand.Parameters.AddWithValue("@DepartmentName",dep.DepartmentName);
+                    myReader = myCommand.ExecuteReader();
+                    table.Load(myReader);
+                    myReader.Close();
+                    myCon.Close();
+                }
+            }
+            return new JsonResult(table);
+        }
+
     }
 }
