@@ -89,7 +89,7 @@ namespace WebApplicationApi.Controller
             return new JsonResult("Berhasil ubah data!");
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public JsonResult Delete(int id) {
             string query = @"
                 DELETE FROM dbo.Department
