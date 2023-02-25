@@ -88,5 +88,28 @@ namespace WebApplicationApi.Controller
             return new JsonResult(table);
         }
 
+        [HttpDelete]
+        public JsonResult Delete(int id) {
+            string query = @"
+                DELETE FROM dbo.Department
+                WHERE DepartmentId = @DepartmentId
+            ";
+
+            DataTable table = new DataTable();
+            string slqDataSource = _configuration.GetConnectionString("EmployeeAppCon");
+            SqlDataReader myReader;
+            using(SqlConnection myCon = new SqlConnection(slqDataSource)) {
+                myCon.Open();
+                using(SqlCommand myCommand = new SqlCommand(query, myCon)) {
+                    myCommand.Parameters.AddWithValue("@DepartmentId",id);
+                    myReader = myCommand.ExecuteReader();
+                    table.Load(myReader);
+                    myReader.Close();
+                    myCon.Close();
+                }
+            }
+            return new JsonResult(table);
+        }
+
     }
 }
