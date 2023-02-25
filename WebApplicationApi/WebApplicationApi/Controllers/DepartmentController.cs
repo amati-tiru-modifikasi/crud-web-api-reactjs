@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using System.Data.SqlClient;
+using WebApplicationApi.Models;
 
 namespace WebApplicationApi.Controller
 {
@@ -41,7 +42,7 @@ namespace WebApplicationApi.Controller
         }
 
         [HttpPost]
-        public JsonResult Post(Department de) {
+        public JsonResult Post(Department dep) {
             string query = @"
                 INSERT INTO dbo.Department
                 VALUES (@DepartmentName)
@@ -64,7 +65,7 @@ namespace WebApplicationApi.Controller
         }
 
         [HttpPut]
-        public JsonResult Put(Department de) {
+        public JsonResult Put(Department dep) {
             string query = @"
                 UPDATE INTO dbo.Department
                 SET DepartmentName = (@DepartmentName)
