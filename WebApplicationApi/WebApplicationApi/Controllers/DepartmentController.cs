@@ -61,7 +61,7 @@ namespace WebApplicationApi.Controller
                     myCon.Close();
                 }
             }
-            return new JsonResult(table);
+            return new JsonResult("Berhasil Ditambahkan!");
         }
 
         [HttpPut]
@@ -86,7 +86,7 @@ namespace WebApplicationApi.Controller
                     myCon.Close();
                 }
             }
-            return new JsonResult(table);
+            return new JsonResult("Berhasil ubah data!");
         }
 
         [HttpDelete]
@@ -109,7 +109,7 @@ namespace WebApplicationApi.Controller
                     myCon.Close();
                 }
             }
-            return new JsonResult(table);
+            return new JsonResult("Berhasil dihapus!");
         }
 
     }
