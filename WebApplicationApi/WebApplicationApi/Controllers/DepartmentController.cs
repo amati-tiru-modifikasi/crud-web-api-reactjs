@@ -67,7 +67,7 @@ namespace WebApplicationApi.Controller
         [HttpPut]
         public JsonResult Put(Department dep) {
             string query = @"
-                UPDATE INTO dbo.Department
+                UPDATE dbo.Department
                 SET DepartmentName = (@DepartmentName)
                 WHERE DepartmentId = @DepartmentId
             ";
