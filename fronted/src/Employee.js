@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { Component } from 'react'
 
-export default function Employee() {
-  return (
-    <div>Employee</div>
-  )
+export default class Employee extends Component {
+  render() {
+    return (
+      <div>Employee</div>
+    )
+  }
 }
