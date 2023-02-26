@@ -1,3 +1,5 @@
+using System.IO;
+using System.Net.Cache;
 using System.Data;
 using System;
 using System.Collections.Generic;
@@ -7,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Data.SqlClient;
 using WebApplicationApi.Models;
 
+
 namespace WebApplicationApi.Controllers
 {
     [ApiController]
@@ -15,8 +18,11 @@ namespace WebApplicationApi.Controllers
     {
         // create dependesi injection
         private readonly IConfiguration _configuration;
-        public EmployeeController(IConfiguration configuration) {
+        // Configurasi Poto
+        private readonly IWebHostEnvironment _env;
+        public EmployeeController(IConfiguration configuration, IWebHostEnvironment env) {
             _configuration = configuration;
+            _env = env;
         }
 
         [HttpGet]
@@ -122,6 +128,29 @@ namespace WebApplicationApi.Controllers
                 }
             }
             return new JsonResult("Berhasil dihapus!");
+        }
+
+        [Route("SaveFile")]
+        [HttpPost]
+        public JsonResult SaveFile()
+        {
+            try
+            {
+                var httpRequest = Request.Form;
+                var postedFile = httpRequest.Files[0];
+                string filename = postedFile.FileName;
+                var physicalPath = _env.ContentRootPath+"/Photos/"+filename;
+
+                using(var stream = new FileStream(physicalPath, FileMode.Create))
+                {
+                    postedFile.CopyTo(stream);
+                }
+                return new JsonResult(filename);
+            }
+            catch (Exception)
+            {
+                return new JsonResult("anon.png");
+            }
         }
 
     }
