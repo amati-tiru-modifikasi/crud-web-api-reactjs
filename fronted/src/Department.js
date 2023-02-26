@@ -1,58 +1,51 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react'
 
-export default class Department extends Component {
+export default function Department() {
 
-  constructor(props){
-    super(props);
-    this.state = {
-      departments:[]
-    }
-  }
+  const [dataDepartment, setDataDepartment] = useState([]);
 
-  refreshList(){
-    fetch(`http://localhost:5253/api/department`)
-    .then(res => res.json())
-    .then(data => {
-      this.setState({ departments:data })
-    })
-  }
+  useEffect(() => {
+    const getDepartment = async () => {
+      try {
+        await fetch(`http://localhost:5253/api/department`)
+        .then(res => res.json())
+        .then(data => {
+          return setDataDepartment(data)
+        })
+       } catch (e) {
+         throw new Error(e);
+       }
+     }
 
-  componentDidMount() {
-    this.refreshList();
-  }
-  componentDidUpdate() {
-    this.refreshList();
-  }
+     getDepartment();
+  },[]);
 
-  render() {
-    const {
-      departments
-    }=this.state;
-    
-    return (
-      <div>
-        <table className='table table-striped'>
-          <thead>
-            <tr>
-              <th>Department ID</th>
-              <th>Department Name</th>
-              <th>Action</th>
+  return ( 
+    <div>
+    <table className='table table-striped'>
+      <thead>
+        <tr>
+          <th>Department ID</th>
+          <th>Department Name</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {console.log(dataDepartment)}
+        {dataDepartment.map((dep) => { //{console.log(dep)}
+          return(
+            <tr key={dep.DepartmentId}>
+              <td>{dep.DepartmentId}</td>
+              <td>{dep.DepartmentName}</td>
+              <td>
+                <button>Edit</button>
+                <button>Delete</button>
+              </td>
             </tr>
-          </thead>
-          <tbody>
-            {departments.map(dep => {
-              <tr key={dep.DepartmentId}>
-                <td>{dep.DepartmentId}</td>
-                <td>{dep.DepartmentName}</td>
-                <td>
-                  <button>Edit</button>
-                  <button>Delete</button>
-                </td>
-              </tr>
-            })}
-          </tbody>
-        </table>
-      </div>
-    )
-  }
+          )
+        })}
+      </tbody>
+    </table>
+  </div>
+  )
 }
