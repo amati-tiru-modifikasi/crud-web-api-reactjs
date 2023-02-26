@@ -31,8 +31,7 @@ export default function Department() {
         </tr>
       </thead>
       <tbody>
-        {console.log(dataDepartment)}
-        {dataDepartment.map((dep) => { //{console.log(dep)}
+        {dataDepartment.map((dep) => {
           return(
             <tr key={dep.DepartmentId}>
               <td>{dep.DepartmentId}</td>
