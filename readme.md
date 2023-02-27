@@ -8,6 +8,8 @@ services.AddCors(c =>
 {
     c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 });
+
+// script diatas terdapat di file Startup.cs
 ```
 
 menjadi
@@ -25,7 +27,9 @@ options.AddPolicy(name: MyAllowSpecificOrigins,
                             .AllowCredentials()
                             .WithOrigins("https://localhost:44454","https://persahabatan.co.id");
                     });
-});                  
+});
+
+// script diatas ada di file Program.cs
 ```
 
 selebihnya sama, hanya penyesuaian configurasi saja. :)
