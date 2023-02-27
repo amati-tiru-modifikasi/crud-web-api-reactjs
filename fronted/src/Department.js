@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from 'react'
+import { FiEdit } from "react-icons/fi"
+import { AiFillDelete } from "react-icons/ai"
+
 
 export default function Department() {
 
@@ -37,8 +40,8 @@ export default function Department() {
               <td>{dep.DepartmentId}</td>
               <td>{dep.DepartmentName}</td>
               <td>
-                <button>Edit</button>
-                <button>Delete</button>
+                <button><FiEdit /></button>
+                <button><AiFillDelete /></button>
               </td>
             </tr>
           )
