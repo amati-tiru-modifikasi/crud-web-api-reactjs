@@ -1,4 +1,38 @@
-Pada Vidio tutorial youtube diatas bagian Fronted ReactJS, menggunakan **Class Component** dimana beberapa Depedensi lain seperti ReactJS dan React Router sudah menggunakan **Functional Component** , misalkan seperti dibawah ini
+## Bagian Backend (API)
+
+Untuk Backend ada perbedaan, misalkan ada File **startup.cs** untuk melakukan Allow CORS config FILE, misalkan seperti berikut ini:
+
+```c#
+//Enable CORS
+services.AddCors(c =>
+{
+    c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+});
+```
+
+menjadi
+
+
+```c#
+builder.Services.AddCors(options =>
+{
+options.AddPolicy(name: MyAllowSpecificOrigins,
+                    policy  =>
+                    {
+                    policy.AllowAnyHeader()
+                            .AllowAnyMethod()
+                            .SetIsOriginAllowed(origin => true)
+                            .AllowCredentials()
+                            .WithOrigins("https://localhost:44454","https://persahabatan.co.id");
+                    });
+});                  
+```
+
+selebihnya sama, hanya penyesuaian configurasi saja. :)
+
+## Bagian Frontend (UI)
+
+Pada Vidio tutorial youtube diatas menggunakan **Class Component** dimana beberapa Depedensi lain seperti ReactJS dan React Router sudah menggunakan **Functional Component** , misalkan seperti dibawah ini
 
 ```typescript
 componentDidMount() {
